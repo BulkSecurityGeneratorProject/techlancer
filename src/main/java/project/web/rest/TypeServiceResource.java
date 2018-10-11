@@ -20,7 +20,7 @@ public class TypeServiceResource {
         this.service = service;
     }
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<TypeService>> getTypeServiceByCategory(@RequestParam(value = "categoryId") String categoryId){
         return ResponseEntity.ok(service.getServicesByCategory(Long.valueOf(categoryId)));
     }
