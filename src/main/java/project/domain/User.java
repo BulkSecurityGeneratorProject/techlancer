@@ -88,6 +88,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "CELLPHONE")
     private String cellphone;
 
+
+    @Column(name = "AVALIATION")
+    private Avaliation avaliation;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
         name = "REL_USER_TYPESERVICE",
@@ -240,6 +244,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setTypeServices(List<RelUserTypeService> typeServices) {
         this.typeServices = typeServices;
+    }
+
+    public Avaliation getAvaliation() {
+        return avaliation;
+    }
+
+    public void setAvaliation(Avaliation avaliation) {
+        this.avaliation = avaliation;
     }
 
     @Override
