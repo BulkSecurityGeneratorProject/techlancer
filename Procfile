@@ -1,1 +1,1 @@
-java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar
+web: java -jar target/frella-1.0.0.jar
