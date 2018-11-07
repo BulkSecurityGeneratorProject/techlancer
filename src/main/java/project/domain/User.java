@@ -88,9 +88,9 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "CELLPHONE")
     private String cellphone;
 
-
-    @Column(name = "AVALIATION")
-    private Avaliation avaliation;
+//    @Transient
+//    @Column(name = "AVALIATION")
+//    private Avaliation avaliation;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -246,13 +246,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.typeServices = typeServices;
     }
 
-    public Avaliation getAvaliation() {
-        return avaliation;
-    }
-
-    public void setAvaliation(Avaliation avaliation) {
-        this.avaliation = avaliation;
-    }
+//    public Avaliation getAvaliation() {
+//        return avaliation;
+//    }
+//
+//    public void setAvaliation(Avaliation avaliation) {
+//        this.avaliation = avaliation;
+//    }
 
     @Override
     public boolean equals(Object o) {
