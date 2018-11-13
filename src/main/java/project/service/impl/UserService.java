@@ -104,6 +104,7 @@ public class UserService {
         newUser.setDetails(userDTO.getDetails());
         newUser.setScholarity(userDTO.getScholarity());
         newUser.setCellphone(userDTO.getCellphone());
+        newUser.setProvider(userDTO.getProvider());
 
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
@@ -276,6 +277,11 @@ public class UserService {
 
     public List<User> getAllUsers(){
         return userRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<User> findOne(Long id){
+        return userRepository.findById(id);
     }
 
     private void clearUserCaches(User user) {

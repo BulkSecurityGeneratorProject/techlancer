@@ -88,6 +88,9 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "CELLPHONE")
     private String cellphone;
 
+    @Column(name = "IS_PROVIDER")
+    private Boolean isProvider;
+
 //    @Transient
 //    @Column(name = "AVALIATION")
 //    private Avaliation avaliation;
@@ -254,6 +257,15 @@ public class User extends AbstractAuditingEntity implements Serializable {
 //        this.avaliation = avaliation;
 //    }
 
+
+    public Boolean getProvider() {
+        return isProvider;
+    }
+
+    public void setProvider(Boolean provider) {
+        isProvider = provider;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -282,6 +294,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", imageUrl='" + imageUrl + '\'' +
             ", activated='" + activated + '\'' +
             ", activationKey='" + activationKey + '\'' +
+            ", isProvider='" + isProvider + '\'' +
             "}";
     }
 }

@@ -1,5 +1,6 @@
 package project.repository;
 
+import org.springframework.data.repository.query.Param;
 import project.domain.User;
 
 import org.springframework.cache.annotation.Cacheable;

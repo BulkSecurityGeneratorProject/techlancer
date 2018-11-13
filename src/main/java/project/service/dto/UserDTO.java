@@ -53,6 +53,8 @@ public class UserDTO {
 
     private String cellphone;
 
+    private Boolean isProvider;
+
     private List<RelUserTypeService> typeService;
 
     public UserDTO() {
@@ -71,6 +73,7 @@ public class UserDTO {
         this.description = user.getDescription();
         this.scholarity = user.getScholarity();
         this.cellphone = user.getCellphone();
+        this.isProvider = user.getProvider();
 
         this.authorities = user.getAuthorities().stream()
             .map(Authority::getName)
@@ -189,6 +192,14 @@ public class UserDTO {
         this.typeService = typeService;
     }
 
+    public Boolean getProvider() {
+        return isProvider;
+    }
+
+    public void setProvider(Boolean provider) {
+        isProvider = provider;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
@@ -200,6 +211,7 @@ public class UserDTO {
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
             ", authorities=" + authorities +
+            ", isProvider=" + isProvider +
             "}";
     }
 }
