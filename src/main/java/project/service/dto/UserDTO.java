@@ -55,6 +55,10 @@ public class UserDTO {
 
     private Boolean isProvider;
 
+    private String address;
+    private String latitude;
+    private String longitude;
+
     private List<RelUserTypeService> typeService;
 
     public UserDTO() {
@@ -74,6 +78,9 @@ public class UserDTO {
         this.scholarity = user.getScholarity();
         this.cellphone = user.getCellphone();
         this.isProvider = user.getProvider();
+        this.address = user.getAddress();
+        this.longitude = user.getLongitude();
+        this.latitude = user.getLatitude();
 
         this.authorities = user.getAuthorities().stream()
             .map(Authority::getName)
@@ -198,6 +205,30 @@ public class UserDTO {
 
     public void setProvider(Boolean provider) {
         isProvider = provider;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override

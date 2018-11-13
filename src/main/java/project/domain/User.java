@@ -91,6 +91,16 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "IS_PROVIDER")
     private Boolean isProvider;
 
+
+    @Column(name = "ADDRESS")
+    private String address;
+
+    @Column(name = "LATITUDE")
+    private String latitude;
+
+    @Column(name = "LONGITUDE")
+    private String longitude;
+
 //    @Transient
 //    @Column(name = "AVALIATION")
 //    private Avaliation avaliation;
@@ -264,6 +274,30 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setProvider(Boolean provider) {
         isProvider = provider;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     @Override

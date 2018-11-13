@@ -105,6 +105,9 @@ public class UserService {
         newUser.setScholarity(userDTO.getScholarity());
         newUser.setCellphone(userDTO.getCellphone());
         newUser.setProvider(userDTO.getProvider());
+        newUser.setAddress(userDTO.getAddress());
+        newUser.setLatitude(userDTO.getLatitude());
+        newUser.setLongitude(userDTO.getLongitude());
 
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
