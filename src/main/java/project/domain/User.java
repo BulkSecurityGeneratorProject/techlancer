@@ -8,10 +8,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import project.config.Constants;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.*;
@@ -30,64 +27,77 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @Null
     @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 50)
     @Column(length = 50, unique = true, nullable = false)
     private String login;
 
     @JsonIgnore
-    @NotNull
+    @Null
     @Size(min = 60, max = 60)
     @Column(name = "password_hash", length = 60, nullable = false)
     private String password;
 
+    @Null
     @Size(max = 50)
     @Column(name = "first_name", length = 50)
     private String firstName;
 
+    @Null
     @Size(max = 50)
     @Column(name = "last_name", length = 50)
     private String lastName;
 
+    @Null
     @Email
     @Size(min = 5, max = 254)
     @Column(length = 254, unique = true)
     private String email;
 
+    @Null
     @NotNull
     @Column(nullable = false)
     private boolean activated = true;
 
+    @Null
     @Size(max = 256)
     @Column(name = "image_url", length = 256)
     private String imageUrl;
 
+    @Null
     @Size(max = 20)
     @Column(name = "activation_key", length = 20)
     @JsonIgnore
     private String activationKey;
 
+    @Null
     @Size(max = 20)
     @Column(name = "reset_key", length = 20)
     @JsonIgnore
     private String resetKey;
 
+    @Null
     @Column(name = "reset_date")
     private Instant resetDate = null;
 
+    @Null
     @Column(name = "DETAILS")
     private String details;
 
+    @Null
     @Column(name = "DESCRIPTION")
     private String description;
 
+    @Null
     @Column(name = "SCHOLARITY")
     private String scholarity;
 
+    @Null
     @Column(name = "CELLPHONE")
     private String cellphone;
 
+    @Null
     @Column(name = "IS_PROVIDER")
     private Boolean isProvider;
 
@@ -105,6 +115,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
 //    @Column(name = "AVALIATION")
 //    private Avaliation avaliation;
 
+    @Null
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
         name = "REL_USER_TYPESERVICE",
