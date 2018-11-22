@@ -35,8 +35,8 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @JsonIgnore
     
-    @Size(min = 60, max = 60)
-    @Column(name = "password_hash", length = 60, nullable = false)
+    @Size(min = 5, max = 60)
+    @Column(name = "password_hash", nullable = false)
     private String password;
 
     

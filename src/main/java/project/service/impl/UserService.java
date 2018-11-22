@@ -90,10 +90,10 @@ public class UserService {
     public User registerUser(UserDTO userDTO, String password) {
 
         User newUser = new User();
-        String encryptedPassword = passwordEncoder.encode(password);
+//        String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(userDTO.getLogin());
         // new user gets initially a generated password
-        newUser.setPassword(encryptedPassword);
+        newUser.setPassword(password);
         newUser.setFirstName(userDTO.getFirstName());
         newUser.setLastName(userDTO.getLastName());
         newUser.setEmail(userDTO.getEmail());
@@ -285,6 +285,11 @@ public class UserService {
     @Transactional(readOnly = true)
     public Optional<User> findOne(Long id){
         return userRepository.findById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public User findOneByEmailAndPassword(String email, String password){
+        return userRepository.findByEmailAndPassword(email, password);
     }
 
     private void clearUserCaches(User user) {

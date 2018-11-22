@@ -1,10 +1,7 @@
 package project.web.rest;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import project.domain.User;
 import project.service.impl.UserService;
 
@@ -34,5 +31,13 @@ public class UsersProviderResource {
        return ResponseEntity.ok(Optional.ofNullable(userService.findOne(id)));
     }
 
-
+    @GetMapping(value = "/login")
+    public ResponseEntity<User> login(@RequestParam String email, @RequestParam String password) {
+        User user = userService.findOneByEmailAndPassword(email, password);
+        if (Objects.nonNull(user)) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
