@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.domain.User;
 import project.service.impl.UserService;
+import project.web.rest.vm.LoginDTO;
 
 import java.util.List;
 import java.util.Objects;
@@ -31,9 +32,9 @@ public class UsersProviderResource {
        return ResponseEntity.ok(Optional.ofNullable(userService.findOne(id)));
     }
 
-    @GetMapping(value = "/login")
-    public ResponseEntity<User> login(@RequestParam String email, @RequestParam String password) {
-        User user = userService.findOneByEmailAndPassword(email, password);
+    @PostMapping(value = "/login")
+    public ResponseEntity<User> login(@RequestBody LoginDTO loginDTO) {
+        User user = userService.findOneByEmailAndPassword(loginDTO.getEmail(), loginDTO.getPassword());
         if (Objects.nonNull(user)) {
             return ResponseEntity.ok(user);
         } else {
