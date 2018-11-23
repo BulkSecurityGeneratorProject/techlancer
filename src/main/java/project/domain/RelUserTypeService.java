@@ -1,5 +1,7 @@
 package project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,11 +12,13 @@ public class RelUserTypeService {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "ID_TYPE_SERVICE", nullable = false)
-    private Long typeServiceId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID_TYPE_SERVICE", nullable = false)
+    private TypeService typeServiceId;
 
-    @Column(name = "ID_USER")
-    private Long userId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID_USER")
+    private User user;
 
     public Long getId() {
         return id;
@@ -24,19 +28,20 @@ public class RelUserTypeService {
         this.id = id;
     }
 
-    public Long getTypeServiceId() {
+    public TypeService getTypeServiceId() {
         return typeServiceId;
     }
 
-    public void setTypeServiceId(Long typeServiceId) {
+    public void setTypeServiceId(TypeService typeServiceId) {
         this.typeServiceId = typeServiceId;
     }
 
-    public Long getUserId() {
-        return userId;
+    @JsonIgnore
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

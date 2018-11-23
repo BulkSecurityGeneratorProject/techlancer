@@ -121,9 +121,8 @@ public class UserService {
         userRepository.save(newUser);
 
         newUser.getTypeServices().forEach(p -> {
-            p.setUserId(newUser.getId());
+            p.setUser(newUser);
         });
-
 
 
         this.clearUserCaches(newUser);

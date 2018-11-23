@@ -115,12 +115,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
 //    @Column(name = "AVALIATION")
 //    private Avaliation avaliation;
 
-    
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "REL_USER_TYPESERVICE",
-        joinColumns = {@JoinColumn(name = "ID_USER")},
-        inverseJoinColumns = {@JoinColumn(name = "ID_TYPE_SERVICE")})
+
+    @OneToMany(
+        mappedBy = "user",
+        cascade = CascadeType.ALL,
+        fetch = FetchType.EAGER
+
+    )
     private List<RelUserTypeService> typeServices = new ArrayList<>();
 
     @JsonIgnore
