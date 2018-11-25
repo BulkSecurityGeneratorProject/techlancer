@@ -112,18 +112,21 @@ public class UserService {
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
 
-        newUser.setTypeServices(new ArrayList<>());
-        userDTO.getTypeService().forEach(p -> newUser.getTypeServices().add(p));
+        if(newUser.getProvider()) {
+            newUser.setTypeServices(new ArrayList<>());
+            userDTO.getTypeService().forEach(p -> newUser.getTypeServices().add(p));
 
+        }
         Set<Authority> authorities = new HashSet<>();
         authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
 
-        newUser.getTypeServices().forEach(p -> {
-            p.setUser(newUser);
-        });
-
+        if(newUser.getProvider()) {
+            newUser.getTypeServices().forEach(p -> {
+                p.setUser(newUser);
+            });
+        }
 
         this.clearUserCaches(newUser);
         log.debug("Created Information for User: {}", newUser);
