@@ -10,6 +10,7 @@ import project.config.Constants;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.*;
 
@@ -110,6 +111,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @Column(name = "LONGITUDE")
     private String longitude;
+
+    @Column(name = "VALUE_HOUR")
+    private BigDecimal valueHour;
+
 
 //    @Transient
 //    @Column(name = "AVALIATION")
@@ -312,6 +317,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.longitude = longitude;
     }
 
+    public BigDecimal getValueHour() {
+        return valueHour;
+    }
+
+    public void setValueHour(BigDecimal valueHour) {
+        this.valueHour = valueHour;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -324,6 +337,8 @@ public class User extends AbstractAuditingEntity implements Serializable {
         User user = (User) o;
         return !(user.getId() == null || getId() == null) && Objects.equals(getId(), user.getId());
     }
+
+
 
     @Override
     public int hashCode() {

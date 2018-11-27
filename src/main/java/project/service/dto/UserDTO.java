@@ -9,6 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -59,6 +60,8 @@ public class UserDTO {
     private String latitude;
     private String longitude;
 
+    private BigDecimal valueHour;
+
     private List<RelUserTypeService> typeService;
 
     public UserDTO() {
@@ -81,6 +84,7 @@ public class UserDTO {
         this.address = user.getAddress();
         this.longitude = user.getLongitude();
         this.latitude = user.getLatitude();
+        this.valueHour = user.getValueHour();
 
         this.authorities = user.getAuthorities().stream()
             .map(Authority::getName)
@@ -229,6 +233,14 @@ public class UserDTO {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public BigDecimal getValueHour() {
+        return valueHour;
+    }
+
+    public void setValueHour(BigDecimal valueHour) {
+        this.valueHour = valueHour;
     }
 
     @Override

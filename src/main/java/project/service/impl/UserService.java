@@ -20,6 +20,7 @@ import project.service.dto.UserDTO;
 import project.service.util.RandomUtil;
 import project.web.rest.errors.InvalidPasswordException;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -108,6 +109,7 @@ public class UserService {
         newUser.setAddress(userDTO.getAddress());
         newUser.setLatitude(userDTO.getLatitude());
         newUser.setLongitude(userDTO.getLongitude());
+        newUser.setValueHour(userDTO.getValueHour());
 
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
